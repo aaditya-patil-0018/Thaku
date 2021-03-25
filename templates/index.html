@@ -8,6 +8,8 @@
 	<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Chonburi&display=swap" rel="stylesheet">
 	<style>
 		body{
 			color: white;
@@ -37,12 +39,74 @@
 			margin-top: -15px;
 			color:lightsteelblue;
 		}
+		form{
+			position: fixed;
+			bottom: 0%;
+			width: 100%;
+			margin: 10px;
+		}
+		input{
+			height: 30px;
+			border-radius: 15px;
+			border: 2px solid rgba(0, 0, 0, 0.808);
+			text-align: center;
+		}
+		button{
+			text-align: center;
+			height: 30px;
+			background-color: black;
+			color: white;
+			border-radius: 25px;
+			border: 2px solid rgba(0, 0, 0, 0.808);
+			width: 80px;
+		}
+		table{
+			position: fixed;
+			border-spacing: 1px;
+			font-family: 'Chonburi', cursive;
+		}
+		th{
+			background-color: black;
+			color: rgb(144,250,233);
+			font-size: 28px;
+		}
+		th, td {
+			border: 2px solid black;
+			width: 100px;
+			font-family: 'Chonburi', cursive;
+		}
+		td{
+			color:cornsilk;
+			font-size: 20px;
+		}
 	</style>
 	<title>Thaku</title>
 </head>
+
 <body>
 	<h1>Hello Thaku!!</h1>
 	<h5>{{ today }}</h5>
 	<h5>{{ now }}</h5>
+
+	<table style="width:100%">
+		<tr>
+		<th>Name</th>
+		<th>Date</th>
+		<th>Time</th>
+		</tr>
+		{% for d in data %}
+			<tr>
+			<td>{{ d[0] }}</td>
+			<td>{{ d[1] }}</td>
+			<td>{{ d[2] }}</td>
+			</tr>
+		{% endfor %}
+	</table>
+	
+	<form action={{ url_for('info') }} method="post">
+		<input type="text" name='name' placeholder="Add your Name">
+		<button>Feed</button>
+	</form>
 </body>
+
 </html>
